@@ -27,7 +27,7 @@ jobs:
       - name: Login to GitHub Package Registry
         uses: docker/login-action@v1
         with:
-          registry: https://npm.pkg.github.com/vue-githubactions
+          registry: https://registry.npmjs.org/vue-githubactions
           username: seongjihye1994
           password: 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
       - name: Publish package
