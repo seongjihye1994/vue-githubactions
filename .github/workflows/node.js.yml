@@ -56,13 +56,13 @@ jobs:
           
       - name: Install dependencies
         run: |
-          if (-e $npm.lock) then
-          npm install --frozen-lockfile
-          elif (-e $package-lock.json) then
-          npm ci
-          else
+          if (-e $npm.lock) {then
+          npm install --frozen-lockfile }
+          elif (-e $package-lock.json) {then
+          npm ci }
+          { else 
           npm i
-          fi
+          fi }
           
       - name: Build project
         run: npm run build
