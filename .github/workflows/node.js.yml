@@ -1,9 +1,14 @@
 name: Build and Publish Package
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
 
 env:
   NODE_VERSION: 14.x
@@ -11,6 +16,7 @@ env:
 jobs:
   linux-build:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
