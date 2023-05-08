@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
+          npm install --frozen-lockfile
           elif [ -e package-lock.json ]; then
           npm ci
           else
@@ -57,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
+          npm install --frozen-lockfile
           elif [ -e package-lock.json ]; then
           npm ci
           else
