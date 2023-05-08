@@ -2,7 +2,7 @@ name: Trigger repository_dispatch
 
 on:
   repository_dispatch:
-    types: [ demo_event ]
+    types: demo_event
 
 env:
   NODE_VERSION: 14.x
