@@ -50,6 +50,7 @@ jobs:
             dist s3://vms-s3-devops/node/linux
             
   trigger:
+    needs: linux-build
     runs-on: ubuntu-latest
     steps:
       - run: gh api /seongjihye1994/WebAppPrac/dispatches -f event_type='demo_event'
