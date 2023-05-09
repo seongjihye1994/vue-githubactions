@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+            repository: actions/checkout
+            ref: ${{ github.event.client_payload.branch }}
         
       - name: Install Node.js
         uses: actions/setup-node@v2
