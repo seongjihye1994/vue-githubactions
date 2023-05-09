@@ -6,6 +6,7 @@ on:
 
 env:
   NODE_VERSION: 14.x
+  AWS_REGION: ap-northeast-2
        
 jobs:
   linux-build:
@@ -33,11 +34,14 @@ jobs:
       - name: Build project
         run: npm run build
         
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::165291449861:role/github-action-s3
+          role-session-name: user-role
+          aws-region: ${{ env.AWS_REGION }}
+        
       - name: Deploy 
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ap-northeast-2
         run: |
           aws s3 cp \
             --recursive \
